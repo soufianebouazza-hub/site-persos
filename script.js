@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const heroElements = document.querySelectorAll(".hero-content > *, .hero-preview");
     const revealElements = document.querySelectorAll(
-        ".header, .benefits-intro, .benefit-card, .homepage-cta, .page-hero > *, .content-section > h2, .section-intro, .content-card, .steps > article, .contact-hero > *, .faq-heading, .faq-item, .contact-form-section, .contact-form, footer"
+        ".site-header, .benefits-intro, .benefit-card, .homepage-cta, .page-hero > *, .content-section > h2, .section-intro, .content-card, .steps > article, .contact-hero > *, .faq-heading, .faq-item, .contact-form-section, .contact-form, footer"
     );
 
     /* Make the hero content visible in a short, staggered sequence. */

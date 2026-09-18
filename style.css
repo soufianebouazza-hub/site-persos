@@ -6,32 +6,53 @@
 }
 /* Keep the logo at a consistent size in the site header. */
 .logo{
-    width: 110px;
-    height: 70px;
+    height: 42px;
+    object-fit: contain;
+    width: 62px;
 }
-/* Shared header and navigation styles used on every page. */
-.header{
+/* Build a modern sticky header with a clear brand and navigation. */
+.site-header{
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2edf6;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
+    padding: 12px max(5vw, 25px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
-.header ul{
+.brand{
+    align-items: center;
+    color: #17212b;
+    display: inline-flex;
+    font-size: 1.1rem;
+    font-weight: 800;
+    gap: 8px;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+}
+.site-header ul{
     list-style: none;
     display: flex;
+    align-items: center;
+    gap: 7px;
 }
-.header ul li{
-    margin: 0 15px;
-
+.site-header ul li{
+    margin: 0;
 }
-.header ul li a{
+.site-header ul li a{
+    border-radius: 5px;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: x-large;
+    color: #4b5b68;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 9px 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
-.header ul li a:hover{
+.site-header ul li a:hover{
+    background: #edf6fe;
     color: #007BFF;
 }
 /* Center the homepage hero content vertically and horizontally. */
@@ -45,7 +66,9 @@
     background-color: #e9ecef;
 }
 /* Highlight the navigation link for the current page. */
-.header ul li a.active{
+/* Highlight the navigation link for the current page. */
+.site-header ul li a.active{
+    background: #edf6fe;
     color: #007BFF;
 }
 /* Set the visual hierarchy for homepage hero text and its primary link. */
@@ -89,11 +112,15 @@
 
 }
 /* Display the Contact navigation link as a prominent button. */
-.header ul li .contact-link{
+/* Display the Contact navigation link as a prominent button. */
+.site-header ul li .contact-link{
     background-color: #007BFF;
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 9px 15px;
+}
+.site-header ul li .contact-link:hover{
+    background: #0056b3;
+    color: #fff;
 }
 /* Homepage services introduction and inline contact call to action. */
 .services{
@@ -707,19 +734,16 @@ footer{
 }
 /* Stack navigation and multi-column content on tablet and mobile screens. */
 @media (max-width: 768px){
-    .header{
+    .site-header{
         flex-direction: column;
         gap: 15px;
     }
-    .header ul{
+    .site-header ul{
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
-    .header ul li{
-        margin: 0 5px;
-    }
-    .header ul li a{
+    .site-header ul li a{
         font-size: 1rem;
     }
     .main h1, .page-hero h1{
