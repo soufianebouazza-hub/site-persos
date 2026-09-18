@@ -1,14 +1,15 @@
- /* CSS Reset */
+/* Apply a predictable box model and remove browser-default spacing. */
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-/* logo mise a l'echelle */
+/* Keep the logo at a consistent size in the site header. */
 .logo{
     width: 110px;
     height: 70px;
 }
-/* first section header all pages */
+/* Shared header and navigation styles used on every page. */
 .header{
     display: flex;
     justify-content: space-between;
@@ -33,17 +34,21 @@
 .header ul li a:hover{
     color: #007BFF;
 }
-/* main content index */
+/* Center the homepage hero content vertically and horizontally. */
 .main{
     display: flex;
-
     justify-content: center;
+    flex-direction: column;
     height: 80vh;
+    padding: 40px 20px;
+    text-align: center;
     background-color: #e9ecef;
 }
+/* Highlight the navigation link for the current page. */
 .header ul li a.active{
     color: #007BFF;
 }
+/* Set the visual hierarchy for homepage hero text and its primary link. */
 .main h1{
     font-size: 3rem;
     color: #333;
@@ -77,18 +82,20 @@
 .main a:visited{
     color: #fff;
 }
+/* Create space between the stacked hero elements. */
 .main {
     gap: 10px;
     align-items: center;
 
 }
-.header ul li .contact{
+/* Display the Contact navigation link as a prominent button. */
+.header ul li .contact-link{
     background-color: #007BFF;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
 }
-/* services section index */
+/* Homepage services introduction and inline contact call to action. */
 .services{
     text-align: center;
     padding: 150px 20px;
@@ -128,23 +135,24 @@
     box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
 }
 
-.contact{
+/* Reusable centered contact call-to-action section. */
+.contact-section{
     text-align: center;
     padding: 50px 20px;
     margin-top: 50px;
 }
-.contact h2{
+.contact-section h2{
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
 }
-.contact p{
+.contact-section p{
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
 }
-.contact a{
+.contact-section a{
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -153,18 +161,314 @@
     text-decoration: none;
     border-radius: 5px;
 }
-.contact a:hover{
+.contact-section a:hover{
     background-color: #0056b3;
 }
-.acontact {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+/* Inner-page hero shared by the Products and Services pages. */
+.page-hero{
+    background-color: #e9ecef;
+    padding: 80px 20px;
+    text-align: center;
 }
+/* Build a distinctive homepage layout with a spacious editorial feel. */
+.homepage-hero{
+    align-items: center;
+    background: linear-gradient(135deg, #f7fbff 0%, #e6f1fc 100%);
+    display: grid;
+    gap: 70px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    min-height: 620px;
+    overflow: hidden;
+    padding: 100px max(8vw, 30px);
+    position: relative;
+}
+.homepage-hero::before{
+    background: #007BFF;
+    border-radius: 50%;
+    content: "";
+    height: 430px;
+    opacity: 0.08;
+    position: absolute;
+    right: -140px;
+    top: -180px;
+    width: 430px;
+}
+.hero-content, .hero-preview{
+    position: relative;
+    z-index: 1;
+}
+.eyebrow{
+    color: #007BFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin: 0;
+    text-transform: uppercase;
+}
+.hero-content h1{
+    color: #17212b;
+    font-size: clamp(2.7rem, 5vw, 4.7rem);
+    letter-spacing: -0.055em;
+    line-height: 1.02;
+    margin: 18px 0 25px;
+    max-width: 760px;
+}
+.hero-content h1 span{
+    color: #007BFF;
+}
+.hero-text{
+    color: #51606e;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 600px;
+}
+.hero-actions{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 34px;
+}
+.hero-primary, .cta-button{
+    background: #007BFF;
+    border-radius: 6px;
+    box-shadow: 0 12px 24px rgba(0, 123, 255, 0.2);
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    padding: 15px 22px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.hero-primary:hover, .cta-button:hover{
+    background: #0056b3;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.hero-secondary{
+    color: #17212b;
+    font-weight: 700;
+    text-decoration: none;
+}
+.hero-secondary span, .cta-button span{
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+.hero-note{
+    color: #6c7a86;
+    font-size: 0.9rem;
+    margin: 35px 0 0;
+}
+.hero-preview{
+    background: #17212b;
+    border: 10px solid #fff;
+    border-radius: 14px;
+    box-shadow: 20px 24px 0 #c9e1f8, 0 20px 40px rgba(23, 33, 43, 0.18);
+    min-height: 370px;
+    transform: rotate(3deg);
+}
+.preview-top{
+    background: #fff;
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+}
+.preview-top span{
+    background: #b7d5f2;
+    border-radius: 50%;
+    height: 7px;
+    width: 7px;
+}
+.preview-body{
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+    justify-content: center;
+    padding: 36px;
+}
+.preview-label{
+    color: #78b8f8;
+    font-size: 0.72rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+}
+.preview-title{
+    color: #fff;
+    font-size: clamp(2rem, 3.3vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    line-height: 0.96;
+    margin: 18px 0;
+}
+.preview-line{
+    background: #007BFF;
+    height: 4px;
+    width: 68px;
+}
+.preview-blocks{
+    display: flex;
+    gap: 8px;
+    margin-top: 35px;
+}
+.preview-blocks span{
+    background: rgba(255, 255, 255, 0.24);
+    display: block;
+    height: 8px;
+    width: 45px;
+}
+/* Present the homepage value proposition in a calm, structured grid. */
+.homepage-benefits{
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 120px 30px;
+}
+.benefits-intro{
+    max-width: 620px;
+}
+.benefits-intro h2, .homepage-cta h2{
+    color: #17212b;
+    font-size: clamp(2rem, 3.2vw, 3.1rem);
+    letter-spacing: -0.045em;
+    line-height: 1.1;
+    margin: 14px 0 0;
+}
+.benefit-list{
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 55px;
+}
+.benefit-card{
+    border-top: 1px solid #b9d9f6;
+    padding: 25px 10px 10px 0;
+}
+.benefit-number{
+    color: #007BFF;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.benefit-card h3{
+    color: #17212b;
+    font-size: 1.35rem;
+    margin: 18px 0 12px;
+}
+.benefit-card p{
+    color: #64727e;
+    line-height: 1.65;
+    margin: 0;
+}
+/* Create a strong final invitation without repeating the hero design. */
+.homepage-cta{
+    align-items: center;
+    background: #eaf4fd;
+    display: flex;
+    gap: 35px;
+    justify-content: space-between;
+    margin: 0 auto 90px;
+    max-width: 1200px;
+    padding: 65px;
+}
+.homepage-cta h2{
+    max-width: 650px;
+}
+/* Define the initial state for elements revealed by JavaScript. */
+.js-reveal{
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js-reveal.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero-preview.is-floating{
+    animation: preview-float 5s ease-in-out infinite;
+}
+@keyframes preview-float{
+    0%, 100%{ transform: rotate(3deg) translateY(0); }
+    50%{ transform: rotate(1deg) translateY(-12px); }
+}
+.page-hero h1{
+    color: #333;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.page-hero p{
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+/* Constrain standard content sections to a readable width. */
+.content-section{
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.content-section h2{
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+/* Style the centered introductory copy above card grids. */
+.section-intro{
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 680px;
+    text-align: center;
+    margin: 0 auto 35px;
+}
+/* Arrange product and service cards in a three-column grid. */
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+/* Give each content card a subtle elevated appearance. */
+.content-card{
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 32px 26px;
+    border-top: 4px solid #007BFF;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.content-card h3{
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+.content-card p{
+    color: #666;
+    line-height: 1.6;
+}
+/* Create a full-width background for the process section. */
+.process{
+    background-color: #f8f8f8;
+    max-width: none;
+}
+/* Keep the process content aligned with the rest of the layout. */
+.process-inner{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+/* Lay out the three process steps consistently. */
+.steps{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+/* Emphasize the number that introduces each process step. */
+.step-number{
+    color: #007BFF;
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+/* Contact-page introduction and contact form styling. */
 .info_contact{
     text-align: center;
     padding: 50px 20px;
@@ -181,7 +485,7 @@
     max-width: 600px;
     margin: 0 auto;
 }
-/* contact form page contact */
+/* Add consistent spacing and accessible field styling to the form. */
 .form-group{
     margin-bottom: 15px;
 
@@ -198,6 +502,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+/* Shared visual treatment for custom call-to-action buttons. */
 .btn{
     display: inline-block;
     margin-top: 20px;
@@ -212,11 +517,268 @@
     margin: 0 auto;
     margin-bottom: 65px;
 }
-/* footer all pages */
+/* Use a focused layout for the redesigned contact page. */
+.contact-hero{
+    background: linear-gradient(135deg, #f7fbff 0%, #e6f1fc 100%);
+    padding: 90px 25px 85px;
+    text-align: center;
+}
+.contact-hero h1{
+    color: #17212b;
+    font-size: clamp(2.4rem, 4.8vw, 4rem);
+    letter-spacing: -0.05em;
+    margin: 16px auto;
+    max-width: 800px;
+}
+.contact-hero > p:not(.eyebrow){
+    color: #5a6975;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 600px;
+}
+.contact-details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 28px;
+}
+.contact-details a{
+    color: #17212b;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.contact-details a + a::before{
+    color: #007BFF;
+    content: "•";
+    margin-right: 12px;
+}
+/* Display question-and-answer content with native, accessible disclosures. */
+.faq-section{
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 90px 25px;
+}
+.faq-heading{
+    margin-bottom: 32px;
+    text-align: center;
+}
+.faq-heading h2, .form-intro h2{
+    color: #17212b;
+    font-size: clamp(2rem, 3vw, 2.7rem);
+    letter-spacing: -0.04em;
+    margin: 12px 0 0;
+}
+.faq-list{
+    border-top: 1px solid #c9dfef;
+}
+.faq-item{
+    border-bottom: 1px solid #c9dfef;
+    padding: 0;
+}
+.faq-item summary{
+    color: #17212b;
+    cursor: pointer;
+    font-size: 1.08rem;
+    font-weight: 700;
+    list-style: none;
+    padding: 23px 40px 23px 0;
+    position: relative;
+}
+.faq-item summary::-webkit-details-marker{
+    display: none;
+}
+.faq-item summary::after{
+    color: #007BFF;
+    content: "+";
+    font-size: 1.6rem;
+    font-weight: 400;
+    position: absolute;
+    right: 4px;
+    top: 16px;
+}
+.faq-item[open] summary::after{
+    content: "−";
+}
+.faq-item p{
+    color: #5f6f7c;
+    line-height: 1.7;
+    margin: -3px 0 23px;
+    max-width: 760px;
+}
+/* Place the contact form in a clear two-column request section. */
+.contact-form-section{
+    align-items: start;
+    background: #17212b;
+    display: grid;
+    gap: 65px;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 70px;
+}
+.form-intro .eyebrow{
+    color: #78b8f8;
+}
+.form-intro h2{
+    color: #fff;
+}
+.form-intro > p:not(.eyebrow){
+    color: #b9c8d3;
+    line-height: 1.7;
+    margin-top: 18px;
+}
+.contact-form{
+    background: #fff;
+    border-radius: 8px;
+    margin: 0;
+    max-width: none;
+    padding: 32px;
+}
+.form-row{
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr 1fr;
+}
+.form-group{
+    margin-bottom: 20px;
+}
+.form-group label{
+    color: #26323d;
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+}
+.form-group label span{
+    color: #007BFF;
+}
+.form-group input,
+.form-group textarea{
+    background: #f8fbfe;
+    border: 1px solid #cbdde9;
+    border-radius: 5px;
+    color: #17212b;
+    font: inherit;
+    padding: 13px 14px;
+}
+.form-group textarea{
+    resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus{
+    background: #fff;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.14);
+    outline: none;
+}
+.form-submit{
+    background: #007BFF;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    padding: 14px 20px;
+}
+.form-submit:hover{
+    background: #0056b3;
+}
+.form-submit span{
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+.form-note{
+    color: #71808c;
+    font-size: 0.8rem;
+    margin: 14px 0 0;
+}
+.faq-bottom{
+    padding-bottom: 110px;
+}
+/* Shared footer displayed at the bottom of every page. */
 footer{
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px;
     margin-top: 50px;
+}
+/* Stack navigation and multi-column content on tablet and mobile screens. */
+@media (max-width: 768px){
+    .header{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .header ul{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .header ul li{
+        margin: 0 5px;
+    }
+    .header ul li a{
+        font-size: 1rem;
+    }
+    .main h1, .page-hero h1{
+        font-size: 2.2rem;
+    }
+    .card-grid, .steps{
+        grid-template-columns: 1fr;
+    }
+    .services{
+        padding: 80px 20px;
+        margin-bottom: 70px;
+    }
+    .homepage-hero{
+        gap: 50px;
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 80px 25px;
+    }
+    .hero-preview{
+        margin: 0 auto;
+        max-width: 340px;
+        width: 90%;
+    }
+    .homepage-benefits{
+        padding: 80px 25px;
+    }
+    .benefit-list{
+        grid-template-columns: 1fr;
+        margin-top: 38px;
+    }
+    .homepage-cta{
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 0 25px 60px;
+        padding: 42px 28px;
+    }
+    .contact-form-section{
+        gap: 38px;
+        grid-template-columns: 1fr;
+        margin: 0 20px;
+        padding: 45px 25px;
+    }
+    .form-row{
+        grid-template-columns: 1fr;
+    }
+    .contact-hero{
+        padding: 70px 25px;
+    }
+}
+/* Honor the visitor's operating-system preference for reduced motion. */
+@media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+    .js-reveal{
+        opacity: 1;
+        transform: none;
+    }
 }

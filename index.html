@@ -1,45 +1,99 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Set the character encoding and make the layout responsive on all screen sizes. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Vitrine</title>
+    <meta name="description" content="E-Vitrine crée des sites web professionnels, élégants et accessibles pour valoriser votre activité en ligne.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#007BFF">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_BE">
+    <meta property="og:site_name" content="E-Vitrine">
+    <meta property="og:title" content="E-Vitrine | Votre activité mérite d'être vue">
+    <meta property="og:description" content="Des sites web professionnels, élégants et accessibles pour valoriser votre activité.">
+    <!-- Load the site's custom styles before the Bootstrap framework. -->
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- Load homepage animations after the document has been parsed. -->
+    <script src="script.js" defer></script>
 
 </head>
 <body>
+    <!-- Shared site navigation. -->
     <section class="header">
-        <img src="img/logo-E_Vitrine.png" alt="logo de la societer" class="logo">
+        <img src="img/logo-E_Vitrine.png" alt="Logo E-Vitrine" class="logo">
         <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="produits.html">Produits</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="./pages/contact.html" class="contact">Contact</a></li>
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="pages/produits.html">Produits</a></li>
+            <li><a href="pages/services.html">Services</a></li>
+            <li><a href="pages/contact.html" class="contact-link">Contact</a></li>
             
         </ul>
     </section>
-    <section class="main">
-        <h1>Bienvenue sur E-Vitrine</h1>
-        <p>Découvrez nos produits et services de qualité.</p>
-        <a href="produits.html" class="btn">Voir nos produits</a>
+    <main>
+        <!-- Homepage hero with the main brand message and action links. -->
+        <section class="homepage-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Votre activité mérite d'être vue</p>
+                <h1>Une vitrine digitale <span>claire, élégante et à votre image.</span></h1>
+                <p class="hero-text">E-Vitrine conçoit des sites web professionnels qui mettent votre savoir-faire au premier plan et inspirent confiance dès la première visite.</p>
+                <div class="hero-actions">
+                    <a href="pages/produits.html" class="hero-primary">Découvrir nos offres</a>
+                    <a href="pages/contact.html" class="hero-secondary">Parler de mon projet <span aria-hidden="true">→</span></a>
+                </div>
+                <p class="hero-note">Simple à parcourir · Pensé pour vos clients · Adapté à tous les écrans</p>
+            </div>
+            <aside class="hero-preview" aria-label="Aperçu de l'offre E-Vitrine">
+                <div class="preview-top"><span></span><span></span><span></span></div>
+                <div class="preview-body">
+                    <p class="preview-label">E-VITRINE</p>
+                    <p class="preview-title">Votre univers,<br>en ligne.</p>
+                    <div class="preview-line"></div>
+                    <div class="preview-blocks"><span></span><span></span><span></span></div>
+                </div>
+            </aside>
+        </section>
 
-    </section>
-    <section class="services">
-        <h2>Nos Services</h2>
-        <p>Nos services de site web préconçus pour professionnels.</p>
-        <p>Nous offrons une gamme complète de services pour répondre à vos besoins.</p>
-        <p>N'hesitez pas à nous <a href="./pages/contact.html" class="acontact">contacter</a> pour plus d'informations.</p>
-    </section>
-    <section class="contact">
-        <h2>Contactez-nous</h2>
-        <p>Pour toute question ou demande, n'hésitez pas à nous contacter.</p>
-        <a href="./pages/contact.html" class="btn">Nous contacter</a>
+        <!-- Key benefits that explain the E-Vitrine approach. -->
+        <section class="homepage-benefits">
+            <div class="benefits-intro">
+                <p class="eyebrow">L'essentiel, bien présenté</p>
+                <h2>Un site qui donne envie de vous connaître.</h2>
+            </div>
+            <div class="benefit-list">
+                <article class="benefit-card">
+                    <span class="benefit-number">01</span>
+                    <h3>Une image forte</h3>
+                    <p>Une direction visuelle cohérente qui rend votre activité reconnaissable et mémorable.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number">02</span>
+                    <h3>Un message clair</h3>
+                    <p>Vos services, votre valeur et vos coordonnées sont accessibles sans chercher.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number">03</span>
+                    <h3>Une expérience fluide</h3>
+                    <p>Une navigation agréable sur ordinateur, tablette et téléphone pour chaque visiteur.</p>
+                </article>
+            </div>
+        </section>
 
-    </section>
+        <!-- Final call to action leading visitors to the contact page. -->
+        <section class="homepage-cta">
+            <div>
+                <p class="eyebrow">Prêt à commencer ?</p>
+                <h2>Faisons de votre présence en ligne une évidence.</h2>
+            </div>
+            <a href="pages/contact.html" class="cta-button">Nous contacter <span aria-hidden="true">→</span></a>
+        </section>
+    </main>
+    <!-- Shared site footer. -->
     <footer>
-        <p>&copy; 2023 E-Vitrine. Tous droits réservés.</p>
+        <p>&copy; 2026 E-Vitrine. Tous droits réservés.</p>
     </footer>
 </body>
 </html>
