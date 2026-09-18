@@ -1,11 +1,14 @@
+ /* CSS Reset */
 *{
     margin: 0;
     padding: 0;
 }
+/* logo mise a l'echelle */
 .logo{
     width: 110px;
     height: 70px;
 }
+/* first section index */
 .header{
     display: flex;
     justify-content: space-between;
@@ -20,7 +23,7 @@
 .header ul li{
     margin: 0 15px;
 
-}   
+}
 .header ul li a{
     text-decoration: none;
     color: #333;
@@ -30,6 +33,7 @@
 .header ul li a:hover{
     color: #007BFF;
 }
+/* main content index */
 .main{
     display: flex;
 
@@ -76,7 +80,7 @@
 .main {
     gap: 10px;
     align-items: center;
-    
+
 }
 .header ul li .contact{
     background-color: #007BFF;
@@ -84,6 +88,7 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+/* services section index */
 .services{
     text-align: center;
     padding: 150px 20px;
@@ -110,7 +115,7 @@
     text-decoration: none;
     border-radius: 5px;
     opacity: 0.9;
-    
+
 }
 .acontact:hover {
     background-color: #0056b3;
@@ -169,13 +174,14 @@
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
-}   
+}
 .info_contact p{
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
 }
+/* contact form page contact */
 .form-group{
     margin-bottom: 15px;
 }
