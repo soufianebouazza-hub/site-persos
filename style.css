@@ -122,6 +122,37 @@
     background: #0056b3;
     color: #fff;
 }
+/* Hide the mobile navigation control until the layout becomes compact. */
+.menu-toggle{
+    align-items: center;
+    background: transparent;
+    border: 1px solid #c9dce9;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 44px;
+    padding: 9px;
+}
+.menu-toggle span{
+    background: #17212b;
+    display: block;
+    height: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    width: 20px;
+}
+.menu-toggle[aria-expanded="true"] span:first-child{
+    transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){
+    opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] span:last-child{
+    transform: translateY(-6px) rotate(-45deg);
+}
 /* Homepage services introduction and inline contact call to action. */
 .services{
     text-align: center;
@@ -712,6 +743,10 @@
 .form-submit:hover{
     background: #0056b3;
 }
+.form-submit:disabled{
+    background: #9aacb9;
+    cursor: not-allowed;
+}
 .form-submit span{
     font-size: 1.2em;
     margin-left: 5px;
@@ -724,6 +759,169 @@
 .faq-bottom{
     padding-bottom: 110px;
 }
+/* Style the client login page as a focused, private entry point. */
+.portal-page{
+    min-height: calc(100vh - 140px);
+}
+.portal-intro{
+    background: linear-gradient(135deg, #f7fbff 0%, #e6f1fc 100%);
+    padding: 85px 25px 125px;
+    text-align: center;
+}
+.portal-intro h1, .dashboard-welcome h1{
+    color: #17212b;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    letter-spacing: -0.05em;
+    margin: 14px auto;
+    max-width: 770px;
+}
+.portal-intro > p:not(.eyebrow),
+.dashboard-welcome > p:not(.eyebrow){
+    color: #5a6975;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 620px;
+}
+.portal-login-section{
+    margin: -65px auto 90px;
+    max-width: 520px;
+    padding: 0 25px;
+    position: relative;
+}
+.portal-login{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(23, 33, 43, 0.13);
+    padding: 38px;
+}
+.portal-login h2{
+    color: #17212b;
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+}
+.portal-login > p{
+    color: #65737f;
+    line-height: 1.6;
+    margin: 0 0 25px;
+}
+.portal-status{
+    color: #50606c;
+    font-size: 0.9rem;
+    margin-top: 16px !important;
+    min-height: 1.45em;
+}
+.portal-help{
+    font-size: 0.88rem;
+    margin-top: 12px !important;
+}
+.portal-help a{
+    color: #007BFF;
+    font-weight: 700;
+}
+/* Build a clear dashboard layout for authenticated portal users. */
+.portal-header{
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #e2edf6;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px max(5vw, 25px);
+}
+.portal-user{
+    align-items: center;
+    display: flex;
+    gap: 16px;
+}
+.portal-user span{
+    color: #566571;
+    font-size: 0.9rem;
+}
+.portal-user button{
+    background: transparent;
+    border: 1px solid #c9dce9;
+    border-radius: 5px;
+    color: #26323d;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 8px 11px;
+}
+.portal-user button:hover{
+    border-color: #007BFF;
+    color: #007BFF;
+}
+.client-dashboard{
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 85px 30px;
+}
+.dashboard-welcome{
+    max-width: 720px;
+}
+.dashboard-welcome > p:not(.eyebrow){
+    margin-left: 0;
+}
+.dashboard-grid{
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 50px;
+}
+.dashboard-card{
+    background: #f7fbff;
+    border: 1px solid #d9e9f6;
+    border-radius: 8px;
+    min-height: 220px;
+    padding: 28px;
+}
+.dashboard-card.project-status{
+    background: #17212b;
+    border-color: #17212b;
+}
+.dashboard-label{
+    color: #007BFF;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-transform: uppercase;
+}
+.dashboard-card h2{
+    color: #17212b;
+    font-size: 1.45rem;
+    letter-spacing: -0.03em;
+    margin: 18px 0 12px;
+}
+.dashboard-card p:not(.dashboard-label){
+    color: #5e6d79;
+    line-height: 1.65;
+    margin: 0;
+}
+.project-status .dashboard-label{
+    color: #78b8f8;
+}
+.project-status h2{
+    color: #fff;
+}
+.project-status p:not(.dashboard-label){
+    color: #bfccd5;
+}
+.dashboard-support{
+    align-items: center;
+    background: #eaf4fd;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 45px;
+}
+.dashboard-support h2{
+    color: #17212b;
+    font-size: clamp(1.7rem, 2.7vw, 2.4rem);
+    letter-spacing: -0.04em;
+    margin: 12px 0 0;
+}
 /* Shared footer displayed at the bottom of every page. */
 footer{
     background-color: #333;
@@ -733,18 +931,42 @@ footer{
     margin-top: 50px;
 }
 /* Stack navigation and multi-column content on tablet and mobile screens. */
-@media (max-width: 768px){
+@media (max-width: 850px){
     .site-header{
+        flex-direction: row;
+        padding: 12px 20px;
+        position: sticky;
+    }
+    .menu-toggle{
+        display: inline-flex;
+    }
+    .site-header nav{
+        background: #fff;
+        border: 1px solid #dce9f3;
+        border-radius: 8px;
+        box-shadow: 0 15px 30px rgba(23, 33, 43, 0.14);
+        display: none;
+        left: 20px;
+        padding: 8px;
+        position: absolute;
+        right: 20px;
+        top: calc(100% + 9px);
+    }
+    .site-header nav.is-open{
+        display: block;
+    }
+    .site-header nav ul{
+        align-items: stretch;
         flex-direction: column;
-        gap: 15px;
+        gap: 3px;
     }
-    .site-header ul{
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-    .site-header ul li a{
+    .site-header nav ul li a{
+        display: block;
         font-size: 1rem;
+        padding: 12px;
+    }
+    .site-header ul li .contact-link{
+        text-align: center;
     }
     .main h1, .page-hero h1{
         font-size: 2.2rem;
@@ -791,6 +1013,21 @@ footer{
     }
     .contact-hero{
         padding: 70px 25px;
+    }
+    .portal-header,
+    .portal-user,
+    .dashboard-support{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .dashboard-grid{
+        grid-template-columns: 1fr;
+    }
+    .client-dashboard{
+        padding: 65px 25px;
+    }
+    .portal-login{
+        padding: 28px;
     }
 }
 /* Honor the visitor's operating-system preference for reduced motion. */

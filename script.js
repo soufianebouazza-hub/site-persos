@@ -3,8 +3,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const heroElements = document.querySelectorAll(".hero-content > *, .hero-preview");
     const revealElements = document.querySelectorAll(
-        ".site-header, .benefits-intro, .benefit-card, .homepage-cta, .page-hero > *, .content-section > h2, .section-intro, .content-card, .steps > article, .contact-hero > *, .faq-heading, .faq-item, .contact-form-section, .contact-form, footer"
+        ".site-header, .benefits-intro, .benefit-card, .homepage-cta, .page-hero > *, .content-section > h2, .section-intro, .content-card, .steps > article, .contact-hero > *, .faq-heading, .faq-item, .contact-form-section, .contact-form, .portal-intro > *, .portal-login, .dashboard-welcome > *, .dashboard-card, .dashboard-support, footer"
     );
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#site-navigation");
+
+    /* Open and close the compact navigation menu on tablets and phones. */
+    const closeMenu = () => {
+        if (!menuToggle || !navigation) return;
+        navigation.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+    };
+
+    if (menuToggle && navigation) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navigation.classList.toggle("is-open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+        });
+
+        navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 850) closeMenu();
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeMenu();
+        });
+    }
 
     /* Make the hero content visible in a short, staggered sequence. */
     heroElements.forEach((element, index) => {

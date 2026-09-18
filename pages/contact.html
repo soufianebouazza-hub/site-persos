@@ -28,11 +28,16 @@
             <img src="../img/logo-E_Vitrine.png" alt="Logo E-Vitrine" class="logo">
             <span>E-Vitrine</span>
         </a>
-        <nav aria-label="Navigation principale">
+        <!-- Toggle the mobile navigation menu on small screens. -->
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Ouvrir le menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="site-navigation" aria-label="Navigation principale">
             <ul>
                 <li><a href="../index.html">Accueil</a></li>
                 <li><a href="produits.html">Produits</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="connexion.html">Espace client</a></li>
                 <li><a href="contact.html" class="contact-link active">Contact</a></li>
             </ul>
         </nav>
