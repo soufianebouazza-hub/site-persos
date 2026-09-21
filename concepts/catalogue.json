@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "atelier-bois",
+    "name": "Atelier Bois",
+    "type": "Artisan & aménagement",
+    "tag": "MENUISERIE · SUR MESURE",
+    "title": "Le bois, à votre mesure.",
+    "intro": "Des matières vivantes, des lignes simples et des meubles pensés pour votre quotidien.",
+    "cta": "Parlons de votre projet",
+    "section": "Des espaces qui vous ressemblent.",
+    "color": "#704a32",
+    "paper": "#f7f2e9",
+    "items": [
+      [
+        "Cuisines sur mesure",
+        "Des rangements bien pensés, des matériaux chaleureux et une cuisine qui suit votre rythme."
+      ],
+      [
+        "Mobilier & bibliothèques",
+        "Une pièce singulière pour accueillir vos livres, vos objets et vos histoires."
+      ],
+      [
+        "Agencements intérieurs",
+        "Exploiter les volumes et dessiner un intérieur cohérent, jusque dans les détails."
+      ]
+    ],
+    "about": "Un projet commence par une conversation, une matière et une idée. Ce concept met en scène un atelier de menuiserie attaché aux détails et aux usages.",
+    "goal": "Transformer la découverte du savoir-faire en demande de devis."
+  },
+  {
+    "slug": "table-saison",
+    "name": "Table Saison",
+    "type": "Restaurant & cuisine",
+    "tag": "CUISINE · SAISONS · PARTAGE",
+    "title": "Le goût des belles saisons.",
+    "intro": "Une cuisine inspirée par les produits, une table accueillante et le plaisir de prendre son temps.",
+    "cta": "Préparer une réservation",
+    "section": "Le plaisir commence dans l’assiette.",
+    "color": "#293e2d",
+    "paper": "#f4f3e9",
+    "items": [
+      [
+        "Le jardin dans l’assiette",
+        "Légumes rôtis, herbes fraîches et textures délicates. Une inspiration végétale au fil des saisons."
+      ],
+      [
+        "La table à partager",
+        "Un déjeuner à deux ou une grande tablée : imaginer un moment convivial autour de produits simples."
+      ],
+      [
+        "Vos moments privés",
+        "Un anniversaire, un repas d’équipe ou une occasion particulière, dans une atmosphère chaleureuse."
+      ]
+    ],
+    "about": "Table Saison est un concept de restaurant qui raconte le produit et le plaisir du partage. Les visuels et propositions de cuisine sont des illustrations.",
+    "goal": "Donner envie de découvrir la carte et de réserver une table."
+  },
+  {
+    "slug": "studio-eclat",
+    "name": "Studio Éclat",
+    "type": "Beauté & bien-être",
+    "tag": "BEAUTÉ · CALME · ATTENTION",
+    "title": "Un moment pour vous.",
+    "intro": "Une parenthèse de douceur, des gestes attentifs et un lieu pensé pour ralentir.",
+    "cta": "Préparer un rendez-vous",
+    "section": "Votre pause, à votre rythme.",
+    "color": "#803d45",
+    "paper": "#fbf2ee",
+    "items": [
+      [
+        "Soins du visage",
+        "Un rituel de douceur et une attention particulière aux besoins de votre peau."
+      ],
+      [
+        "Rituels de détente",
+        "Un moment de calme pour relâcher la pression et prendre du temps pour soi."
+      ],
+      [
+        "Beauté des mains",
+        "Des gestes précis et une finition soignée pour les petits détails du quotidien."
+      ]
+    ],
+    "about": "Studio Éclat est un concept d’institut imaginé autour d’une expérience calme et personnelle. Les soins présentés illustrent la structure possible du site.",
+    "goal": "Présenter les soins et faciliter une demande de rendez-vous."
+  }
+]

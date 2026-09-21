@@ -1,0 +1,1 @@
+document.querySelector('#call-demo').addEventListener('click',()=>{document.querySelector('#call-status').textContent='Démonstration : aucun numéro réel n’est configuré. Sur votre site, ce bouton appellera directement votre snack.';});
