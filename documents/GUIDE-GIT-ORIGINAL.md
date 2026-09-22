@@ -1,13 +1,4 @@
-# E-Vitrine — PHP MVC avec WampServer
-
-Le site fonctionne avec Apache, PHP et MySQL sur **http://127.0.0.1:4173/**.
-
-Lire le [guide de démarrage et d’architecture MVC](documents/GUIDE-MVC.md).
-Pour créer votre compte, ouvrir `storage/ACTIVATION-LOCALE.txt`, puis `/activation` dans le navigateur.
-Le code actif se trouve dans `app` et `public`. L’ancienne version est conservée dans `archive-static`.
-Ne plus utiliser Live Server : démarrer Wamp depuis le raccourci sur le Bureau.
-
-## 📚 Ancien aide-mémoire Git
+# 📚 Git Cheat Sheet
 
 ## 🔗 Première connexion au projet
 
@@ -122,3 +113,4 @@ switch  = changer de branche
 clone   = copier un projet
 status  = vérifier
 ```
+

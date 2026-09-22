@@ -1,0 +1,3 @@
+const {spawn}=require('node:child_process'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..');const server=spawn(path.join(root,'.runtime/php/php.exe'),['-S','127.0.0.1:4181','-t','public','public/router.php'],{cwd:root,env:{...process.env,APP_ENV:'production'},stdio:'ignore'});
+(async()=>{try{let response;for(let i=0;i<50;i++){try{response=await fetch('http://127.0.0.1:4181/');break}catch{await new Promise(r=>setTimeout(r,100))}}assert.equal(response.status,503);assert.ok((await response.text()).includes('HTTPS'));console.log('OK production refuse HTTP sans TLS.');}finally{server.kill();}})().catch(e=>{console.error(e);process.exitCode=1});

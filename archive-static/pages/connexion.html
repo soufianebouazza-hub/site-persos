@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Set the character encoding and make the layout responsive on all screen sizes. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes espaces | E-Vitrine</title>
+    <meta name="description" content="Accédez à votre espace client E-Vitrine pour suivre votre projet et consulter vos documents.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#142b27">
+    <!-- Load the site's custom styles and shared animation script. -->
+    <script src="../script.js" defer></script>
+    <!-- Load the official Supabase browser client before the portal scripts. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../client-config.js"></script>
+    <script src="../espace-data.js" defer></script>
+    <script src="../client-auth.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Shared site navigation; this page is marked as active. -->
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="E-Vitrine - Accueil">
+            <img src="../img/logo-evitrine-vert.svg" alt="Logo E-Vitrine" class="logo">
+            <span>E-Vitrine</span>
+        </a>
+        <!-- Toggle the mobile navigation menu on small screens. -->
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Ouvrir le menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="site-navigation" aria-label="Navigation principale">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos offres</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="connexion.html" class="active">Mes espaces</a></li>
+                <li><a href="contact.html" class="contact-link">Parlons de votre projet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="portal-page">
+        <!-- Explain the purpose of the client portal before the sign-in form. -->
+        <section class="portal-intro">
+            <p class="eyebrow">Gestion · Organisation · Suivi client</p>
+            <h1>Tout votre travail, au même endroit.</h1>
+            <p>Gérez votre activité, organisez vos tâches ou suivez votre projet client depuis votre espace.</p>
+        </section>
+
+        <!-- Collect client credentials for Supabase authentication. -->
+        <section class="portal-login-section">
+            <form class="portal-login" id="login-form">
+                <h2>Accéder à mon espace</h2>
+                <p>Votre compte ouvre automatiquement l’espace correspondant à vos droits.</p>
+                <div class="form-group">
+                    <label for="portal-email">Adresse e-mail</label>
+                    <input type="email" id="portal-email" name="email" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="portal-password">Mot de passe</label>
+                    <input type="password" id="portal-password" name="password" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="form-submit">Se connecter <span aria-hidden="true">→</span></button>
+                <p id="login-status" class="portal-status" aria-live="polite"></p>
+                <p class="portal-help">Vous n'avez pas encore vos accès ? <a href="contact.html">Contactez-nous</a>.</p>
+            </form>
+        </section>
+<section class="spaces-preview"><div><p class="eyebrow">Découvrir les espaces</p><h2>Trois besoins. Un même point de départ.</h2><p>La démonstration utilise des données fictives sauvegardées dans votre navigateur. Elle n’est pas un espace privé.</p></div><div class="spaces-preview-grid"><article><h3>Mon activité</h3><p>Clients, projets, avancement et demandes commerciales.</p><a href="demandes-clients.html?demo=1">Voir les demandes clients ↗</a></article><article><h3>Mon organisation</h3><p>Tâches à terminer, dates à retenir et notes personnelles.</p><a href="espace-personnel.html?demo=1#organizer">Explorer tâches & notes ↗</a></article><article><h3>Côté client</h3><p>Étapes du projet, prochaine action et échanges avec E-Vitrine.</p><a href="espace-client.html?demo=1">Explorer le suivi client ↗</a></article></div></section>
+    </main>
+
+    <!-- Shared site footer. -->
+    <footer><p>&copy; 2026 E-Vitrine. Tous droits réservés.</p><p class="footer-privacy"><a href="rgpd.html">Confidentialité & RGPD</a></p></footer>
+</body>
+</html>

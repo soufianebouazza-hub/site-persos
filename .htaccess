@@ -1,0 +1,2 @@
+# Le DocumentRoot doit être public/, jamais la racine du projet.
+Require all denied

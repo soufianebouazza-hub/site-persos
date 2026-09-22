@@ -1,0 +1,6 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(css|js|svg|webp|png|jpg|ico)$ - [END]
+RewriteRule ^ index.php [END]
