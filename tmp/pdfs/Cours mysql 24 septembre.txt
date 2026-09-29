@@ -1,0 +1,95 @@
+--- PAGE 1 ---
+Vous pouvez, par exemple, tester vos fonctions directement comme ci-dessous : 
+ 
+ 
+(Exos) 
+1) Affichez la racine carrée des poids, le nom et prénom de tous les utilisateurs. 
+2) Affichez-moi la racine carré avec 2 chiffres après la virgule de l’exercice 1. 
+3) Arrondissez-moi le résultat de la racine carré de l’exercice 1. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+16) Les fonctions pour les chaines de caractères 
+
+
+--- PAGE 2 ---
+ 
+Il y en a aussi plusieurs, vous pouvez le voir dans la documentation. Ceux que vous pourrez 
+utiliser par exemple c’est la concaténation de plusieurs chaines de caractères en utilisant 
+CONCAT(). Exemple on va essayer de concaténer le prénom et le nom de nos utilisateurs : 
+ 
+On voit qu’il a concaténé le prénom et le nom, en laissant un espace entre grâce au « ‘  ‘ ». 
+On a aussi la fonction LENGTH(), qui va récupérer la taille d’une chaine de caractères. 
+On a aussi les fonctions un peu plus spéciales comme LOWER() et UPPER() qui permettent 
+de mettre en minuscule ou en majuscule la chaine de caractère.  La fonction SUBSTR() 
+(substring) est une fonction que vous retrouverez dans beaucoup de langages de 
+programmation, elle permet de couper la chaine de caractères.  
+ 
+Ici vous remarquerez que j’ai mis 2, pour dire qu’on veut commencer à partir du deuxième 
+caractère donc par exemple pour « Bond », ça affichera « ond ». 
+ 
+ 
+On peut aussi donner une limite.   
+
+
+--- PAGE 3 ---
+ 
+On voit bien qu’on commence au deuxième caractère et qu’on prend ensuite 3 caractères. 
+Attention, ici quand on donne la position on ne commence pas à 0 mais bien à 1. 
+On a la fonction REPLACE() qui permet de remplacer une chaine de caractère par une autre. 
+ 
+ 
+ 
+ 
+ 
+ 
+Il a remplacé dans JAMES « ame » par « ok », ce qui donne Joks. Attention cette fonction 
+fait attention au majuscule et minuscule (Case Sensitive). Elle est très utile cette fonction si 
+vous voulez faire des modifications en masses avec l’Update. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Exos) 
+
+
+--- PAGE 4 ---
+1) Affichez les utilisateurs qui sont né à Bruxelles ou à Anvers ou à London ou à New-
+York. Je veux une colonne en plus avec comme nom « Voici le genre, la ville et le 
+poids » ainsi que leurs données séparées par des virgules et un espace. Pour le 
+poids, je veux en kilos. 
+ 
+ 
+2) Affichez les 5 premiers utilisateurs ainsi que le nombre de lettre dans leurs 
+prénoms. En ajoutant comme nom de colonne « Le nombre de lettres dans le 
+prénom ». Trier par ordre décroissant sur le nombre de lettre du prénom. 
+ 
+3) Affichez-moi les noms en majuscule et les prénoms en minuscule de tous les 
+utilisateurs ayant un « a » dans leur nom ou prénom. 
+4) Affichez-moi les villes ainsi que les villes sans leurs 3 premières lettres.  
+5) Affichez-moi les villes ainsi que les villes que de la 4ème lettre à la 7ème. 
+6) Remplacez-moi dans les villes, « xelle » par « ssel ». En gros traduire Bruxelles en 
+Anglais. 
+7) Traduisez de manière inverse London en Londres en remplaçant seulement les 
+lettres nécessaire… ATTENTION à ne pas modifier d’autres villes, il faut une 
+condition. 
+ 

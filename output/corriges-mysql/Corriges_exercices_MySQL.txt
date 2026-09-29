@@ -1,0 +1,556 @@
+﻿CORRIGÉS DES EXERCICES MYSQL - CFITECH
+====================================
+
+Sources : les six PDF du dossier cours_cfitch\mysql.
+Les exercices de ce dossier sont en SQL, pas en PHP.
+« Matière PHP et MYSQL .pdf » est un programme : aucun exercice à résoudre.
+Les cinq autres PDF sont traités ci-dessous, dans l'ordre du cours.
+
+MODE D'EMPLOI
+Ouvrir ce fichier avec le Bloc-notes. Copier seulement la requête SQL de
+l'exercice voulu dans l'onglet SQL de phpMyAdmin, puis l'exécuter.
+Ce corrigé est un document : aucune requête n'a été exécutée sur tes bases.
+Les exercices de création/modification se font dans l'ordre, une seule fois.
+Ne pas coller tout le document en une fois : il contient des explications.
+
+CONVENTIONS DU COURS
+Base : coursmysql. Table : users.
+Champs : id_user, firstname, lastname, gender, date_of_birth, city.
+Le champ weight_kg est ajouté dans la partie 3.
+Certaines captures utilisent « sexe » au lieu de « gender » : les réponses
+utilisent gender, comme le texte du cours. Si ta colonne s'appelle sexe,
+remplace gender par sexe dans les requêtes.
+Les valeurs des captures sont des données d'exercice, même lorsqu'une date
+ne correspond pas à la naissance réelle d'une personnalité.
+Les noms de villes sont repris tels que demandés : Bruxelles, Anvers,
+London, New-York, etc. Si tes données utilisent Brussel, adapte la valeur.
+
+Avant de travailler dans la base du cours :
+
+USE coursmysql;
+
+Si elle n'existe pas encore, création facultative :
+
+CREATE DATABASE IF NOT EXISTS coursmysql
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_general_ci;
+USE coursmysql;
+
+
+1. MYSQL PART 1.PDF
+==================
+Page 16 - Création de tables
+
+Exercice 1 - Créer articles avec les trois champs demandés.
+
+CREATE TABLE articles (
+    article_name VARCHAR(255),
+    description TEXT,
+    creation_date DATE
+);
+
+La clé primaire et les dates automatiques sont ajoutées dans la partie 2.
+
+
+2. MYSQL PART 2.PDF
+==================
+Page 9 - Structure de la table articles
+
+Exercice 1 - Ajouter la clé primaire id_article et l'auto-incrémentation.
+
+ALTER TABLE articles
+ADD id_article INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+
+Exercice 2 - Rendre le nom d'article unique.
+
+ALTER TABLE articles
+ADD CONSTRAINT uq_articles_name UNIQUE (article_name);
+
+Exercice 3 - Renommer creation_date en created_at, avec date et heure
+actuelles par défaut.
+
+ALTER TABLE articles
+CHANGE creation_date created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+Exercice 4 - Ajouter updated_at, actualisé lors d'une modification.
+
+ALTER TABLE articles
+ADD updated_at DATETIME NOT NULL
+    DEFAULT CURRENT_TIMESTAMP
+    ON UPDATE CURRENT_TIMESTAMP;
+
+Exercice 5 - Si articles n'existe pas, faire d'abord la partie 1, exercice 1,
+puis les quatre modifications ci-dessus. Ce point est un prérequis.
+
+Page 14 - Insertion et suppression
+
+Prérequis facultatif : si users n'existe pas encore, voici sa structure
+à ce stade du cours. Ne pas recréer une table déjà présente.
+
+CREATE TABLE users (
+    id_user INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    gender ENUM('M', 'F', 'X') NOT NULL,
+    date_of_birth DATE NOT NULL,
+    city VARCHAR(255) NOT NULL
+);
+
+Exercice 1 - Créer cinq utilisateurs différents.
+Les données sont libres : voici un exemple. On mémorise les identifiants
+du troisième et du cinquième ajout pour pouvoir les supprimer précisément,
+même si la table contenait déjà des utilisateurs.
+
+INSERT INTO users (firstname, lastname, gender, date_of_birth, city)
+VALUES ('Alice', 'Martin', 'F', '1995-03-12', 'Bruxelles');
+
+INSERT INTO users (firstname, lastname, gender, date_of_birth, city)
+VALUES ('Paul', 'Dupont', 'M', '1992-06-18', 'Anvers');
+
+INSERT INTO users (firstname, lastname, gender, date_of_birth, city)
+VALUES ('Sam', 'Petit', 'X', '2001-02-15', 'London');
+SET @troisieme = LAST_INSERT_ID();
+
+INSERT INTO users (firstname, lastname, gender, date_of_birth, city)
+VALUES ('Emma', 'Durand', 'F', '2003-11-07', 'Paris');
+
+INSERT INTO users (firstname, lastname, gender, date_of_birth, city)
+VALUES ('Lucas', 'Robert', 'M', '1998-09-25', 'Namur');
+SET @cinquieme = LAST_INSERT_ID();
+
+Exercice 2 - Supprimer les troisième et cinquième utilisateurs ajoutés.
+Exécuter dans la même session que l'exercice 1 pour garder les variables.
+
+DELETE FROM users
+WHERE id_user IN (@troisieme, @cinquieme);
+
+Si la table était vide et son compteur à 1 avant l'exercice 1, la version
+simple est : DELETE FROM users WHERE id_user IN (3, 5);
+
+Exercice 3 - Vider users, puis recréer exactement les trois utilisateurs
+de la capture avec les identifiants 1, 2 et 3.
+TRUNCATE vide la table d'exercice et réinitialise son compteur.
+
+TRUNCATE TABLE users;
+
+INSERT INTO users
+    (id_user, firstname, lastname, gender, date_of_birth, city)
+VALUES
+    (1, 'James', 'Bond', 'M', '2007-07-07', 'London'),
+    (2, 'Jack', 'Bauer', 'M', '2004-12-24', 'New-York'),
+    (3, 'Lara', 'Croft', 'F', '2000-08-01', 'Washington');
+
+
+3. MYSQL PART 3.PDF
+==================
+Page 1 - Modification d'un enregistrement
+
+Exercice 1 - Créer l'enregistrement de Beyonce montré dans la capture.
+La capture lui donne l'identifiant 9. Celui-ci doit être disponible.
+
+INSERT INTO users
+    (id_user, firstname, lastname, gender, date_of_birth, city)
+VALUES (9, 'Beyonce', 'Knowles', 'F', '1980-11-20', 'Kinshasa');
+
+Exercice 2 - Corriger sa naissance et sa ville.
+
+UPDATE users
+SET date_of_birth = '1981-09-04', city = 'Houston'
+WHERE id_user = 9;
+
+Page 2 - Sélection
+
+Exercice 1 - Nom et prénom de l'utilisateur 1.
+
+SELECT lastname, firstname FROM users WHERE id_user = 1;
+
+Exercice 2 - Ville de toutes les femmes.
+
+SELECT city FROM users WHERE gender = 'F';
+
+Exercice 3 - Date de naissance de Beyonce.
+
+SELECT date_of_birth FROM users
+WHERE firstname = 'Beyonce' AND lastname = 'Knowles';
+
+Page 3 - Pagination
+
+Exercice 1 - Deux enregistrements à partir du troisième.
+
+SELECT * FROM users ORDER BY id_user LIMIT 2, 2;
+
+LIMIT décalage, quantité : on saute deux lignes, puis on en prend deux.
+ORDER BY définit un ordre stable ; sans lui, « troisième » est indéterminé.
+
+Page 4 - Ordre des données
+
+Exercice 1 - Noms et prénoms, triés par prénom croissant.
+
+SELECT lastname, firstname FROM users ORDER BY firstname ASC, id_user ASC;
+
+Exercice 2 - Trois premiers après tri de naissance, du plus jeune au plus vieux.
+
+SELECT lastname, date_of_birth FROM users
+ORDER BY date_of_birth DESC, id_user ASC LIMIT 3;
+
+Exercice 3 - Du deuxième au cinquième après tri décroissant des villes.
+
+SELECT lastname, firstname, city FROM users
+ORDER BY city DESC, id_user ASC LIMIT 1, 4;
+
+Exercice 4 - Genre croissant, puis nom décroissant.
+
+SELECT lastname, gender FROM users ORDER BY gender ASC, lastname DESC;
+
+Le « petit problème » : gender est un ENUM('M','F','X'). MySQL trie ce type
+dans l'ordre de déclaration, ici M, F, X, et non dans l'ordre alphabétique.
+Pour obtenir F, M, X, utiliser :
+
+SELECT lastname, gender FROM users
+ORDER BY CAST(gender AS CHAR) ASC, lastname DESC;
+
+Page 5 - COUNT et alias
+
+Exercice 1 - Nombre de femmes.
+
+SELECT COUNT(*) AS le_nbr_femme FROM users WHERE gender = 'F';
+
+Exercice 2 - Nombre d'hommes.
+
+SELECT COUNT(*) AS le_nbr_homme FROM users WHERE gender = 'M';
+
+Page 6 - Poids et agrégats
+
+Exercice 1 - Ajouter weight_kg, entier de taille 5 et NOT NULL.
+
+ALTER TABLE users ADD weight_kg INT(5) NOT NULL;
+
+INT(5) reprend la notation du cours : le 5 est une largeur d'affichage
+historique, pas une limite de cinq chiffres. Si ta version refuse cette
+notation, utilise INT NOT NULL. Les poids sont renseignés juste après.
+
+Exercice 2 - Poids différents sauf pour le premier et le dernier utilisateur.
+Les poids sont libres. « Premier/dernier » signifie ici plus petit/grand ID.
+Cette solution fonctionne aussi si tu as ajouté d'autres utilisateurs.
+
+SET @premier_id = (SELECT MIN(id_user) FROM users);
+SET @dernier_id = (SELECT MAX(id_user) FROM users);
+
+UPDATE users SET weight_kg = 70 + id_user;
+UPDATE users SET weight_kg = 70
+WHERE id_user IN (@premier_id, @dernier_id);
+
+Avec les ID 1, 2, 3 et 9 : les poids sont 70, 72, 73 et 70 kg.
+
+Exercice 3 - Poids minimum des hommes.
+
+SELECT MIN(weight_kg) AS `Le poids minimum des hommes`
+FROM users WHERE gender = 'M';
+
+Exercice 4 - Poids maximum des femmes.
+
+SELECT MAX(weight_kg) AS poids_maximum_femmes
+FROM users WHERE gender = 'F';
+
+Exercice 5 - Somme des poids.
+
+SELECT SUM(weight_kg) AS somme_des_poids FROM users;
+
+Exercice 6 - Moyenne des poids de tous les utilisateurs.
+
+SELECT AVG(weight_kg) AS `La moyenne des poids des utilisateurs` FROM users;
+
+Exercice 7 - Moyenne par genre.
+
+SELECT gender, AVG(weight_kg) AS la_moyenne
+FROM users GROUP BY gender;
+
+Un genre sans utilisateur n'a pas de ligne dans ce résultat.
+
+
+4. MYSQL PART 4.PDF
+==================
+Page 2 - Opérateurs de comparaison
+
+Exercice 1 - Utilisateurs nés avant 2000.
+
+SELECT * FROM users WHERE date_of_birth < '2000-01-01';
+
+Exercice 2 - Utilisateurs de plus de 70 kg.
+
+SELECT * FROM users WHERE weight_kg > 70;
+
+Exercice 3 - Femmes de plus de 65 kg.
+
+SELECT * FROM users WHERE gender = 'F' AND weight_kg > 65;
+
+Exercice 4 - Hommes de moins de 90 kg.
+
+SELECT * FROM users WHERE gender = 'M' AND weight_kg < 90;
+
+Page 2 - LIKE
+
+Exercice 1 - Nom commençant par B, tri décroissant du nom.
+
+SELECT firstname, lastname FROM users
+WHERE lastname LIKE 'B%' ORDER BY lastname DESC;
+
+Exercice 2 - Femmes avec A dans le prénom, tri croissant du prénom.
+
+SELECT lastname, firstname FROM users
+WHERE gender = 'F' AND firstname LIKE '%A%' ORDER BY firstname ASC;
+
+Exercice 3 - Hommes sans A dans le prénom.
+
+SELECT lastname, firstname FROM users
+WHERE gender = 'M' AND firstname NOT LIKE '%A%';
+
+Exercice 4 - Prénom se terminant par E.
+
+SELECT * FROM users WHERE firstname LIKE '%E';
+
+Exercice 5 - E dans le nom, du plus lourd au moins lourd.
+
+SELECT lastname, firstname, weight_kg FROM users
+WHERE lastname LIKE '%E%' ORDER BY weight_kg DESC;
+
+Ces recherches supposent la collation insensible à la casse du cours.
+
+Page 4 - OR et AND
+
+Exercice 1 - Femmes de plus de 50 kg, prénoms décroissants.
+
+SELECT firstname, lastname, gender, weight_kg FROM users
+WHERE gender = 'F' AND weight_kg > 50 ORDER BY firstname DESC;
+
+Exercice 2 - Hommes dont la ville contient A, noms croissants.
+
+SELECT firstname, lastname, gender, city FROM users
+WHERE gender = 'M' AND city LIKE '%A%' ORDER BY lastname ASC;
+
+Exercice 3 - Nés avant le 15 janvier 1999 et de plus de 65 kg.
+
+SELECT * FROM users
+WHERE date_of_birth < '1999-01-15' AND weight_kg > 65
+ORDER BY weight_kg DESC;
+
+Exercice 4 - Femmes ou hommes satisfaisant au moins un des trois critères.
+« Après janvier 1990 » signifie ici à partir du 1er février 1990.
+
+SELECT firstname, lastname, weight_kg, gender, date_of_birth FROM users
+WHERE gender IN ('F', 'M')
+  AND (weight_kg > 90 OR firstname LIKE 'B%'
+       OR date_of_birth >= '1990-02-01')
+ORDER BY date_of_birth DESC;
+
+Les parenthèses appliquent le filtre F/M à tous les critères du OR.
+
+Exercice 5 - Trois premiers avec C dans le prénom ou E dans le nom.
+
+SELECT * FROM users
+WHERE firstname LIKE '%C%' OR lastname LIKE '%E%'
+ORDER BY lastname ASC, id_user ASC LIMIT 3;
+
+Page 5 - Exercices récapitulatifs
+
+Conventions de dates : « après 2000 » exclut toute l'année 2000, donc
+commence le 1er janvier 2001. « Entre février 1990 et mars 2020 » inclut
+les deux mois entiers. Les bornes sont explicites dans les réponses.
+
+Exercice 0 - Ajouter quatre utilisateurs selon les critères demandés.
+Exemple libre : une F, un M, deux X ; deux Bruxelles, deux Anvers ;
+deux naissances avant 2000, deux après 2000 ; dates et poids tous différents.
+Le PDF demande de montrer cette requête au formateur avant de l'exécuter.
+
+INSERT INTO users
+    (firstname, lastname, gender, date_of_birth, city, weight_kg)
+VALUES
+    ('Alice', 'Martin', 'F', '1995-03-12', 'Bruxelles', 58),
+    ('Bruno', 'Durand', 'M', '1988-07-22', 'Anvers', 92),
+    ('Charlie', 'Petit', 'X', '2002-11-05', 'Bruxelles', 67),
+    ('Alex', 'Leroy', 'X', '2005-04-18', 'Anvers', 81);
+
+Exercice 1 - Noms de la liste et poids inférieur à 85 kg, tri par prénom.
+
+SELECT * FROM users
+WHERE lastname IN ('Bond', 'Bauer', 'Knowles', 'Croft') AND weight_kg < 85
+ORDER BY firstname ASC;
+
+Exercice 2 - Six premiers avec un ID de la liste OU un genre M/X.
+
+SELECT * FROM users
+WHERE id_user IN (1, 3, 5, 7) OR gender IN ('M', 'X')
+ORDER BY id_user ASC LIMIT 6;
+
+Exercice 3 - Nombre de personnes nées avant 2000, par genre.
+
+SELECT gender, COUNT(*) AS `Le nombre des personnes nées avant 2000`
+FROM users WHERE date_of_birth < '2000-01-01' GROUP BY gender;
+
+Exercice 4 - Deux enregistrements à partir du quatrième.
+
+SELECT * FROM users ORDER BY id_user ASC LIMIT 3, 2;
+
+Exercice 5 - Deux à partir du cinquième, nés avant juin 2010, noms décroissants.
+Le filtre puis le tri s'appliquent avant la pagination.
+
+SELECT * FROM users WHERE date_of_birth < '2010-06-01'
+ORDER BY lastname DESC, id_user ASC LIMIT 4, 2;
+
+Exercice 6 - Poids le plus élevé parmi les personnes nées après 2000.
+
+SELECT MAX(weight_kg) AS `Le poids le plus élevé de la personne née après 2000`
+FROM users WHERE date_of_birth >= '2001-01-01';
+
+Exercice 7 - Moyenne des poids des Bruxellois.
+
+SELECT AVG(weight_kg) AS moyenne_poids_bruxellois
+FROM users WHERE city = 'Bruxelles';
+
+Exercice 8 - Plus petit poids par genre.
+
+SELECT gender, MIN(weight_kg) AS `le poids de la personne la plus légère`
+FROM users GROUP BY gender;
+
+Exercice 9 - Naissances de février 1990 à mars 2020 inclus, du plus vieux au plus jeune.
+
+SELECT firstname, date_of_birth FROM users
+WHERE date_of_birth >= '1990-02-01' AND date_of_birth < '2020-04-01'
+ORDER BY date_of_birth ASC;
+
+Exercice 10 - Trois à partir du cinquième, E ou A dans le prénom, tri par genre.
+
+SELECT * FROM users
+WHERE firstname LIKE '%E%' OR firstname LIKE '%A%'
+ORDER BY gender ASC, id_user ASC LIMIT 4, 3;
+
+Le tri sur gender suit l'ordre de l'ENUM ; voir partie 3, page 4, exercice 4.
+
+Exercice 11 - Moyenne des poids des Anversois et des Bruxellois.
+Interprétation principale : une moyenne commune aux deux villes.
+
+SELECT AVG(weight_kg) AS `La moyenne des poids`
+FROM users WHERE city IN ('Anvers', 'Bruxelles');
+
+Si le formateur souhaite une moyenne séparée par ville :
+
+SELECT city, AVG(weight_kg) AS `La moyenne des poids`
+FROM users WHERE city IN ('Anvers', 'Bruxelles') GROUP BY city;
+
+Exercice 12 - Ni Bruxelles ni Anvers, tri par ville.
+
+SELECT * FROM users WHERE city NOT IN ('Bruxelles', 'Anvers')
+ORDER BY city ASC;
+
+Exercice 13 - Somme des poids hors Bruxelles.
+
+SELECT SUM(weight_kg)
+    AS `La somme des poids de tous les utilisateurs en dehors de Bruxelles`
+FROM users WHERE city <> 'Bruxelles';
+
+Exercice 14 - Quatre derniers utilisateurs (plus grands identifiants).
+
+SELECT * FROM users ORDER BY id_user DESC LIMIT 4;
+
+Exercice 15 - Villes de la liste, naissance avant décembre 1990, poids décroissant.
+
+SELECT * FROM users
+WHERE city IN ('Bruxelles', 'Anvers', 'New-York', 'Houston')
+  AND date_of_birth < '1990-12-01'
+ORDER BY weight_kg DESC;
+
+
+5. COURS MYSQL 24 SEPTEMBRE.PDF
+==============================
+Page 1 - Fonctions numériques
+
+Exercice 1 - Racine carrée du poids, nom et prénom de tous les utilisateurs.
+
+SELECT lastname, firstname, SQRT(weight_kg) AS racine_du_poids FROM users;
+
+Exercice 2 - Racine carrée avec deux chiffres après la virgule.
+
+SELECT lastname, firstname,
+    CAST(ROUND(SQRT(weight_kg), 2) AS DECIMAL(10, 2)) AS racine_du_poids
+FROM users;
+
+ROUND(..., 2) arrondit à deux décimales ; DECIMAL(10, 2) conserve une échelle
+de deux décimales, y compris si le résultat se termine par zéro.
+
+Exercice 3 - Arrondir la racine carrée à l'entier le plus proche.
+
+SELECT lastname, firstname, ROUND(SQRT(weight_kg)) AS racine_arrondie FROM users;
+
+Page 4 - Fonctions pour les chaînes de caractères
+
+Exercice 1 - Utilisateurs des quatre villes et colonne concaténée.
+
+SELECT users.*,
+    CONCAT(gender, ', ', city, ', ', weight_kg, 'kg')
+        AS `Voici le genre, la ville et le poids`
+FROM users WHERE city IN ('Bruxelles', 'Anvers', 'London', 'New-York');
+
+La capture écrit « sexe », mais l'énoncé demande « genre » : l'alias suit
+l'énoncé. Exemple de valeur affichée : M, London, 70kg.
+
+Exercice 2 - Cinq premiers après tri décroissant du nombre de lettres du prénom.
+
+SELECT users.*,
+    CHAR_LENGTH(firstname) AS `Le nombre de lettres dans le prénom`
+FROM users ORDER BY CHAR_LENGTH(firstname) DESC, id_user ASC LIMIT 5;
+
+CHAR_LENGTH compte les caractères ; LENGTH compte les octets. Cela évite
+de compter un caractère accentué plusieurs fois en UTF-8.
+Si « les cinq premiers » signifie les cinq plus petits ID avant le tri :
+
+SELECT premiers.*,
+    CHAR_LENGTH(firstname) AS `Le nombre de lettres dans le prénom`
+FROM (SELECT * FROM users ORDER BY id_user ASC LIMIT 5) AS premiers
+ORDER BY CHAR_LENGTH(firstname) DESC, id_user ASC;
+
+Exercice 3 - Noms en majuscules, prénoms en minuscules, avec A dans l'un des deux.
+
+SELECT UPPER(lastname) AS nom_majuscule, LOWER(firstname) AS prenom_minuscule
+FROM users WHERE lastname LIKE '%a%' OR firstname LIKE '%a%';
+
+Exercice 4 - Villes et villes sans leurs trois premières lettres.
+
+SELECT city, SUBSTR(city, 4) AS ville_sans_trois_premieres_lettres FROM users;
+
+Exercice 5 - Villes et lettres de la quatrième à la septième incluse.
+
+SELECT city, SUBSTR(city, 4, 4) AS lettres_4_a_7 FROM users;
+
+SUBSTR commence à 1. De la lettre 4 à la lettre 7, il y a quatre caractères.
+
+Exercice 6 - Remplacer xelle par ssel dans Bruxelles.
+Afficher le résultat sans modifier les données :
+
+SELECT city, REPLACE(city, 'xelle', 'ssel') AS ville_traduite FROM users;
+
+Si l'exercice demande d'enregistrer la modification :
+
+UPDATE users SET city = REPLACE(city, 'xelle', 'ssel') WHERE city = 'Bruxelles';
+
+Bruxelles devient Brussels. REPLACE est sensible à la casse.
+
+Exercice 7 - Traduire London en Londres en ne remplaçant que la fin nécessaire.
+
+SELECT city, REPLACE(city, 'don', 'dres') AS ville_traduite
+FROM users WHERE city = 'London';
+
+Pour enregistrer le changement :
+
+UPDATE users SET city = REPLACE(city, 'don', 'dres') WHERE city = 'London';
+
+« don » devient « dres » : London devient Londres. On inclut le d dans
+le motif pour cibler la fin. Remplacer simplement « on » par « res » serait
+incorrect : « on » apparaît deux fois dans London. La condition WHERE
+empêche de modifier d'autres villes.
+
+
+FIN DU CORRIGÉ
+==============
+Les solutions suivent les champs, les données et les numéros des PDF.
+Les jeux de données librement choisis sont signalés comme exemples.
+Les résultats exacts des SELECT dépendent des données présentes chez toi.

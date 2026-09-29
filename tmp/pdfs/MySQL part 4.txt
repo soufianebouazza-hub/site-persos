@@ -1,0 +1,140 @@
+--- PAGE 1 ---
+Dunia Julien, Cfitech 2026  1 
+ 
+ 
+Les opérateurs 
+Nous avons aussi des opérateurs classiques de comparaisons : =, !=, >, >=, <, <=, <> et 
+NOT. 
+ 
+On voit bien qu’il aura pris tous les utilisateurs ayant une date supérieure au 1er janvier 
+2000. 
+L’opérateur « != » c’est pour dire une négation donc quand on met par exemple gender != 
+M, ça voudra dire on ne veut aucun homme. « != » c’est équivalent à « <> ».
+  
+
+
+--- PAGE 2 ---
+Dunia Julien, Cfitech 2026  2 
+(Exos) 
+1) Affichez les utilisateurs qui sont né avant 2000. 
+2) Affichez les utilisateurs qui ont plus de 70kg. 
+3) Affichez les femmes qui ont plus de 65 Kg. 
+4) Affichez les hommes qui ont moins de 90 kg. 
+ 
+Le Like 
+On peut faire une petite condition spéciale, c’est une recherche partielle. Par exemple je 
+veux récupérer les utilisateurs dont la première lettre est « J ». Voici la syntaxe : 
+ 
+Ici ce que signifie le « J% », c’est donne-moi tous les prénoms qui commence par « J » et 
+qui ont n’importe quoi d’autres derrière. Donc si on avait fait par exemple « %E », ça 
+voudrait dire, donne-moi tout ce qui se termine par E. NOT LIKE c’est la négation. 
+Attention si vous faites par exemple %A, si vous avez JACK et LARA dans votre table il 
+montrera que LARA, parce que JACK rempli bien le fait qu’on ait n’importe quoi devant le 
+A mais pas derrière.  
+Vous l’aurez compris pour pouvoir afficher aussi JACK il aurait fallu rajouter un %. Donc 
+faire %A%, de ce fait on prend n’importe quoi avant le A ainsi qu’après. 
+ 
+(Exos) 
+1) Affichez tous les prénoms et noms, dont le nom commence par B par ordre 
+décroissant sur le nom. 
+2) Affichez tous les noms et prénoms, des femmes ayant A dans leurs prénoms, 
+par ordre croissant sur le prénom. 
+3) Affichez tous les noms et prénoms des hommes n’ayant pas A dans leurs 
+prénoms. 
+4) Affichez tous les utilisateurs dont la dernière lettre du prénom se termine par 
+un E. 
+5) Affichez tous les noms, prénoms et poids des utilisateurs ayant E dans leurs 
+noms ordonner par leur poids, du plus lourd au moins lourd. 
+
+
+--- PAGE 3 ---
+Dunia Julien, Cfitech 2026  3 
+Le OR et AND 
+Si on veut combiner des conditions, on peut utiliser ces opérateurs. Le « OR » (le ou) 
+comme son nom l’indique va permettre d’afficher en fonction de chaque condition 
+qu’on rajoute.  
+ 
+On voit bien ici qu’on a affiché les deux utilisateurs. Affiche-moi l’user 1 ou l’user 2. Le 
+OR va vraiment chercher séparément les conditions. Il trouve le 1 il affiche ensuite 
+deuxième condition il trouve le 2 et l’affiche aussi. 
+Le AND lui va plutôt vérifier que les conditions ensemble soient remplis. Donc si on fait 
+la même commande que pour le OR. On demande d’afficher l’user 1 ET le user 2. 
+Voyons le résultat. 
+ 
+On voit bien ici qu’on a aucun résultat. Par ce qu’il n’existe aucun 
+utilisateur/enregistrement qui a comme id_user 1 et en même temps id_user 2. En 
+revanche une autre condition aurait fonctionné par exemple. 
+ 
+On voit bien ici que Jack Bauer et James Bond remplissent les 2 conditions, ce sont bien 
+des hommes et ils font bien plus de 75 Kg. 
+ 
+
+
+--- PAGE 4 ---
+Dunia Julien, Cfitech 2026  4 
+(Exos) (Quand je dis affichez les femmes/hommes ça veut dire prénoms et noms) 
+1) Affichez les femmes, leurs genres et leurs poids faisant plus de 50 Kilos et 
+ordonnez-les par prénoms décroissant.  
+2) Affichez les hommes, leurs genres et leurs villes, dont la ville contient un A, 
+par ordre alphabétique sur le nom de famille. 
+3) Affichez les utilisateurs qui sont nés avant le 15 janvier 1999 et faisant plus 
+de 65 kilos. Du plus lourd au moins lourd. 
+4) Affichez les femmes ou hommes (+ leurs poids, genres et leurs dates de 
+naissances) qui ont plus de 90 kilos ou leurs prénoms commençant par un B 
+ou qui sont né après janvier 1990. Ordonnez du plus jeune au plus vieux. 
+5) Affichez les 3 premiers utilisateurs ayant dans leurs prénoms un C ou 
+contenant dans leurs noms un E. Ordonnez par leurs noms. 
+ 
+Le IN 
+Nous avons vu qu’on pouvait utiliser par exemple plusieurs OR de suite pour enchaîner 
+les conditions. Donc si on veut mettre comme conditions, d’afficher tous les utilisateurs 
+avec comme id_user ou 1 ou 2 ou 3 ou 5. On aurait dû écrire à chaque fois Where 
+id_user=1 OR id_user = 2 OR id_user = 3 OR id_user = 5. Vous comprenez vite que si on 
+veut encore beaucoup plus d’utilisateurs, ça peut rallonger la requête SQL.  
+ 
+Pour simplifier cela, en SQL on a le IN qui s’utilise de cette manière. 
+ 
+Vous pouvez voir sa syntaxe. Vous pouvez bien entendu combinez avec d’autres 
+conditions à la suite. Par exemple  
+ 
+
+
+--- PAGE 5 ---
+Dunia Julien, Cfitech 2026  5 
+(Exos récap) 
+0) Ajoutez 4 utilisateurs différents dont 1 femme, 1 homme et les deux autres 
+sont des Autres (X). 2 venants de Bruxelles et 2 de Anvers, dont 2 sont né 
+avant 2000 et 2 après 2000. Je veux aussi des poids et dates différentes. 
+MONTREZ-MOI avant d’exécuter la commande. (PDF part 2). 
+1) Affichez les utilisateurs qui ont comme nom soit Bond, soit Bauer, soit 
+Knowles ou Croft et qui pèse moins de 85 Kilos. Ordonnez par leurs prénoms. 
+2) Affichez les 6 premiers utilisateurs qui ont comme ID soit 1, soit 3, soit 5 ou 
+7, ou qui soient des hommes ou des autres. 
+3) Affichez le nombre de personnes qui sont né avant 2000, regroupé par leurs 
+genres. En donnant comme titre à ce nombre : « Le nombre des personnes 
+nées avant 2000 ». 
+4) Affichez les 2 enregistrements à partir du quatrième enregistrement. 
+5) Affichez les 2 enregistrements à partir du cinquième qui sont né avant juin 
+2010. Organiser par noms décroissant. 
+6) Affichez le poids de la plus lourde personne qui est née après 2000. En 
+donnant comme titre : « Le poids le plus élevé de la personne née après 
+2000 » 
+7) Affichez la moyenne des poids des Bruxellois. 
+8) Affichez le poids de la personne la plus légère de chaque catégorie des 
+genres. Donnez comme nom : « le poids de la personne la plus légère ». 
+9) Affichez les prénoms et date de naissance des personnes nés entre février 
+1990 et mars 2020. Ordonnez du plus vieux au plus jeune. 
+10) Affichez les 3 utilisateurs à partir du 5ème qui ont un E ou un A dans leurs 
+prénoms. Ordonnez par leurs genres. 
+11) Affichez la moyenne des poids des Anversois et des Bruxellois. Avec ce titre : 
+« La moyenne des poids » 
+ 
+12) Affichez tous les utilisateurs ne venant ni de Bruxelles ni de Anvers, par ordre 
+sur le nom de leurs villes. 
+13) Affichez la somme des poids de tous les utilisateurs ne venant pas de 
+Bruxelles. En donnant comme nom : « La somme des poids de tous les 
+utilisateurs en dehors de Bruxelles ». 
+14) Affichez les 4 derniers utilisateurs. 
+15) Affichez les utilisateurs dont leur ville est soit Bruxelles, soit Anvers, soit 
+New-York ou Houston et qui sont né avant décembre 1990. Du plus lourd au 
+moins lourd. 

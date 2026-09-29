@@ -1,0 +1,160 @@
+--- PAGE 1 ---
+Time line PHP (août à mars) 
+ 
+ 
+Chapitre 1 : Introduction  
+• Comprendre les concepts de base de la programmation.  
+• Appréhender le rôle du PHP dans le développement web. 
+Chapitre 2 : Installation  
+• Installer et configurer un environnement de développement PHP (Wamp,  
+   Visual Studio, etc.).   
+• Comprendre les composants nécessaires pour exécuter du code PHP. 
+Chapitre 3 : Les variables  
+• Maîtriser la déclaration et l'utilisation des variables en PHP.  
+• Comprendre les types de données et les conversions. 
+Chapitre 4 : Les tableaux  
+• Créer et manipuler des tableaux pour stocker et gérer des données.  
+• Utiliser des fonctions pour travailler avec les tableaux.  
+Chapitre 5 : Les conditions  
+• Utiliser des structures de contrôle pour prendre des décisions dans le code.  
+• Implémenter des conditions et des branchements conditionnels.  
+Chapitre 6 : Les opérateurs logiques et de comparaisons  
+• Comprendre les opérateurs logiques et de comparaisons en PHP.  
+• Créer des expressions conditionnelles complexes.  
+Chapitre 7 : Les boucles  
+• Utiliser des structures itératives pour répéter des actions.  
+• Maîtriser les boucles "for", "while" et "foreach".  
+----Contrôle avant/après les vacances de Toussaint---- 
+Chapitre 8 : Fonction  
+• Comprendre le concept de fonction en programmation.  
+• Créer et appeler des fonctions pour réutiliser du code. 
+Chapitre 9 : Fonction utilisateurs  
+• Créer des fonctions personnalisées pour effectuer des tâches spécifiques.  
+• Diviser le code en fonctions pour une meilleure organisation. 
+Chapitre 10 : Require et Include  
+• Intégrer des fichiers externes dans le code PHP.  
+• Comprendre la différence entre "require" et "include". 
+
+--- PAGE 2 ---
+Chapitre 11 : PHP et HTML  
+• Intégrer du code PHP dans du code HTML.  
+• Créer des pages web dynamiques en combinant PHP et HTML. 
+Chapitre 12 : Traitement des formulaires  
+• Gérer les données soumises par les utilisateurs via des formulaires.  
+• Valider et traiter les entrées utilisateur. 
+Chapitre 13 : Les dates  
+• Manipuler les dates et les heures en PHP.  
+• Formater et afficher les informations temporelles. 
+Chapitre 14 : La session  
+• Comprendre les sessions et leur utilisation pour maintenir l'état utilisateur.  
+• Gérer les données de session pour une expérience utilisateur améliorée. 
+----Examen de sélection décembre---- 
+----Projet pendant vacances de Noël---- 
+Chapitre 15 : Objet DateTime 
+• Utiliser la classe DateTime pour gérer les dates et les heures de manière orientée objet.  
+• Calculer des intervalles et effectuer des opérations temporelles. 
+Chapitre 16 : Les classes (Orienté Objet)  
+• Comprendre les concepts de base de la programmation orientée objet.  
+• Définir et instancier des classes, ainsi que créer des objets. 
+Chapitre 17 : L’héritage  
+• Appliquer l'héritage pour créer des relations entre les classes.  
+  • Étendre et spécialiser des classes existantes. 
+Chapitre 18 : Les Exceptions  
+• Gérer les erreurs et les exceptions dans le code PHP.  
+• Utiliser les blocs "Try" et "catch" pour gérer les erreurs de manière efficace. 
+Chapitre 19 : PDO  
+• Comprendre l'accès aux bases de données avec l'extension PDO.  
+• Effectuer des opérations de base de données en utilisant des requêtes préparées. 
+----Projets PHP avec PDO de groupe (villes)---- 
+----Test final après les vacances de carnaval---- 
+Chapitre 20 : Le Déploiement 
+• Comment déployer son site web complet avec Base de données sur internet.  
+----UAA 5 : Déployer site web---- 
+
+--- PAGE 3 ---
+Timeline MySQL (août à février)  
+ 
+Chapitre 1 : Introduction  
+• Acquérir une vue d'ensemble des concepts fondamentaux de la gestion 
+   de bases de données.  
+• Comprendre l'importance et les applications de MySQL dans le monde de la gestion  
+   de données. 
+Chapitre 2 : Définition  
+• Explorer les principaux termes et définitions liés à la gestion de bases  
+   de données relationnelles.  
+• Établir une compréhension solide des concepts de clés primaires, clés étrangères et autres 
+   éléments essentiels. 
+Chapitre 3 : Installation  
+• Installer et configurer MySQL sur différentes plateformes (Windows, Linux, etc.).  
+• Comprendre les prérequis et les composants nécessaires pour une installation réussie. 
+Chapitre 4 : PhpMyAdmin  
+• Découvrir l'interface de gestion web de MySQL avec PhpMyAdmin.  
+• Apprendre à créer, modifier et supprimer des bases de données à travers cette interface. 
+Chapitre 5 : Création de base de données  
+• Créer une base de données depuis PhpMyAdmin.  
+• Comprendre les options de configuration disponibles lors de la création  
+   d'une nouvelle base de données. 
+Chapitre 6 : Suppression base de données  
+• Apprendre comment supprimer correctement une base de données.  
+• Comprendre les considérations importantes à prendre en compte avant de supprimer  
+   des données. 
+Chapitre 7 : Création de tables  
+• Maîtriser la création de tables pour organiser les données de manière structurée.  
+  • Apprendre à définir les types de données appropriés pour chaque champ. 
+Chapitre 8 : Création de tables en ligne de commande  
+• Découvrir comment créer des tables en utilisant des commandes SQL.  
+• Acquérir la capacité de gérer la structure des tables directement via les requêtes. 
+ 
+Chapitre 9 : Modification d’une table  
+• Apprendre à modifier la structure d'une table existante.  
+• Comprendre comment ajouter, modifier ou supprimer des colonnes. 
+
+--- PAGE 4 ---
+Chapitre 10 : Concept des clés  
+• Explorer en profondeur les concepts de clés primaires et clés étrangères.  
+• Apprendre comment établir des relations entre les tables pour assurer l'intégrité  
+   des données. 
+Chapitre 11 : Insertion des données dans nos tables  
+• Découvrir comment insérer des données dans les tables.  
+• Apprendre à créer des enregistrements avec des valeurs appropriées. 
+Chapitre 12 : Suppression d’un enregistrement  
+• Apprendre à supprimer des enregistrements de manière sélective.  
+• Comprendre les implications de la suppression sur les relations entre les tables. 
+Chapitre 13 : Modification d’un enregistrement  
+• Découvrir comment mettre à jour les données d'un enregistrement.  
+• Acquérir la capacité de modifier les valeurs existantes dans les champs. 
+Chapitre 14 : Sélection de données  
+• Apprendre à récupérer des données spécifiques à partir des tables.  
+• Comprendre l'utilisation des requêtes SELECT pour filtrer et trier les données. 
+----Contrôle---- 
+Chapitre 15 : Les fonctions numériques  
+• Explorer les fonctions SQL pour effectuer des opérations numériques sur les données.  
+• Apprendre à calculer des moyennes, totaux et autres opérations mathématiques. 
+Chapitre 16 : Les fonctions pour les chaines de caractères  
+• Découvrir les fonctions SQL pour manipuler les chaînes de caractères.  
+• Apprendre à concaténer, découper et formater les valeurs de chaînes. 
+Chapitre 17 : Les fonctions pour les dates  
+• Maîtriser les fonctions SQL pour travailler avec les dates et les horaires.  
+• Acquérir la capacité de formater, extraire et calculer des valeurs de dates. 
+Chapitre 18 : Les dumps  
+• Apprendre à sauvegarder et restaurer des bases de données à l'aide de fichiers  
+   de sauvegarde.  
+• Comprendre l'importance des sauvegardes pour prévenir la perte de données. 
+----Projet---- 
+Chapitre 19 : Les unions 
+ • Comment unir deux tables qui ont la même structure 
+Chapitre 20 : Les clés étrangères 
+ • Comment lier les tables entre elles.  
+
+--- PAGE 5 ---
+Chapitre 21 : Les jointures  
+• Explorer les jointures SQL pour combiner les données de différentes tables.  
+• Apprendre à récupérer des informations complètes en combinant des  
+   enregistrements associés. 
+Chapitre 22 : Introduction aux Droits Utilisateurs 
+ • Configuration des droits utilisateurs à partir d’un terminal 
+Chapitre 23 : Procédure stockée  
+• Découvrir comment créer et utiliser des procédures stockées.  
+• Apprendre à automatiser des tâches répétitives et complexes dans MySQL. 
+-----UAA 4 : Exploiter les bases de données----  
+ 

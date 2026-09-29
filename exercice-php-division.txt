@@ -1,0 +1,57 @@
+EXERCICE PHP : DIVISION
+
+Demander deux nombres et afficher le résultat de leur division.
+Si le deuxième nombre vaut zéro, afficher un message et redemander
+les deux nombres jusqu'à ce que la division soit possible.
+
+SOLUTION AVEC UNE FONCTION, WHILE ET IF / ELSEIF
+
+<?php
+
+function diviser($nombre1, $nombre2) {
+    return $nombre1 / $nombre2;
+}
+
+$nombre2 = 0;
+
+while ($nombre2 == 0) {
+    $nombre1 = (float) readline("Veuillez introduire un premier nombre : ");
+    $nombre2 = (float) readline("Veuillez introduire un deuxième nombre : ");
+
+    if ($nombre2 == 0) {
+        echo "Vous avez tenté une division par 0, recommencez." . PHP_EOL;
+    } elseif ($nombre2 != 0) {
+        $resultat = diviser($nombre1, $nombre2);
+        echo "$nombre1 divisé par $nombre2 donne $resultat" . PHP_EOL;
+    }
+}
+
+EXPLICATIONS
+
+- La fonction diviser renvoie le résultat de la division.
+- $nombre2 = 0 permet d'entrer dans la boucle la première fois.
+- readline demande une saisie dans le terminal.
+- (float) convertit la saisie en nombre décimal.
+- while recommence tant que le deuxième nombre vaut zéro.
+- if affiche le message si le deuxième nombre vaut zéro.
+- elseif appelle la fonction uniquement si le deuxième nombre est non nul.
+- Ici, else pourrait remplacer elseif ($nombre2 != 0).
+- PHP_EOL ajoute un retour à la ligne.
+- Cet exercice suppose que l'utilisateur saisit des nombres.
+
+EXEMPLE
+
+Premier nombre : 45
+Deuxième nombre : 0
+Vous avez tenté une division par 0, recommencez.
+Premier nombre : 45
+Deuxième nombre : 2
+45 divisé par 2 donne 22.5
+
+POUR EXÉCUTER LE CODE
+
+Copier uniquement le code depuis <?php jusqu'à la fin de la boucle
+(donc avant EXPLICATIONS) dans un fichier division.php.
+Dans le terminal, depuis son dossier, exécuter :
+
+php division.php
